@@ -1,0 +1,9 @@
+body {
+	margin: auto;
+	text-align: center;
+}
+
+input {
+	width: 20em;
+	font-size: 2em;
+}
