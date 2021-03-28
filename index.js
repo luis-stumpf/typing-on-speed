@@ -22,7 +22,7 @@ shuffleArray(words);
 const wordsOrg = [...words];
 
 // start timer
-var seconds = 5;
+var seconds = 60;
 var timer;
 function myFunction() {
 	if (seconds < 60) {
