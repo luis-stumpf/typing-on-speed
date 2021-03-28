@@ -22,21 +22,20 @@ shuffleArray(words);
 const wordsOrg = [...words];
 
 // start timer
-var seconds = 60;
+var seconds = 5;
 var timer;
 function myFunction() {
 	if (seconds < 60) {
-		// I want it to say 1:00, not 60
 		document.getElementById("timer").innerHTML = seconds;
 	}
 	if (seconds > 0) {
-		// so it doesn't go to -1
 		seconds--;
 	} else {
 		wpm = userInput.length;
 		getScore();
 		console.log(userInput);
 		clearInterval(timer);
+		$("#input").prop("disabled", true);
 		document.getElementById("WPM").innerHTML = "You type " + wpm + " per min";
 		document.getElementById("score").innerHTML =
 			"You type " + score + " right words";
@@ -50,7 +49,7 @@ document.getElementById("input").onkeypress = function () {
 	if (!timer) {
 		timer = window.setInterval(function () {
 			myFunction();
-		}, 1000); // every second
+		}, 1000);
 	}
 };
 
@@ -69,7 +68,6 @@ function getScore() {
 
 document.getElementById("timer").innerHTML = "1:00";
 
-// get user input
 document.getElementById("test").value = words.join("");
 
 var userInput = [];
