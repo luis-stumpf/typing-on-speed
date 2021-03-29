@@ -3,7 +3,7 @@ const words = [
 	" die",	" der",	" und",	" zu",	" den",	" das",	" nicht",	" von",	" sie",	" ist",	" des",	" sich",	" mit",	" dem",	" dass",	" er",	" es",	" ein",	" ich",	" auf",	" so",	" eine", " auch", " als", " an", " nach", " wie",
 	" im", " für", " ja", " wurde",	" jetzt", " immer",	" seinen", " wohl",	" dieses", " ihren", " würde", " diesen", " sondern", " weil", " welcher", " nichts", " diesem", " alles", " waren", " will", " Herr", " viel", " mein", " also",
 	" soll", " worden",	" lassen", " dies", " machen", " ihrer", " weiter",	" Leben", " recht",	" etwas", " keine",	" seinem", " ob", " dir", " allen", " großen", " Jahre", " Weise", " müssen", " welches", " wäre", " erst", " einmal", 
-	" Mann", " hätte", " zwei",	" dich", " allein",	" Herren", " während", "Paragraph",	" anders", " Liebe", " kein", " damit",	" gar",	" Hand", " Herrn", " euch",	" sollte", " konnte", " ersten", " deren", " zwischen",	" wollen", " denen",
+	" Mann", " hätte", " zwei",	" dich", " allein",	" Herren", " während", " Paragraph",	" anders", " Liebe", " kein", " damit",	" gar",	" Hand", " Herrn", " euch",	" sollte", " konnte", " ersten", " deren", " zwischen",	" wollen", " denen",
 	" dessen", " sagen", " bin", " Menschen", " gut", " darauf", " wurden",	" weiß", " gewesen", " Seite", " bald",	" weit", " große", " solche", " hatten", " eben", " andern", " beiden",	" macht", " sehen", " ganze", " anderen", " lange",	
 	" wer",	" ihrem", " zwar", " gemacht", " dort",	" kommen", " Welt",	" heute", " Frau", " werde", " derselben", " ganzen", " deutschen",	" lässt", " vielleicht", " meiner",
 ];
@@ -22,11 +22,11 @@ shuffleArray(words);
 const wordsOrg = [...words];
 
 // start timer
-var seconds = 60;
+var seconds = 5;
 var timer;
 function myFunction() {
 	if (seconds < 60) {
-		document.getElementById("timer").innerHTML = seconds;
+		$("#timer").html(seconds);
 	}
 	if (seconds > 0) {
 		seconds--;
@@ -36,22 +36,21 @@ function myFunction() {
 		console.log(userInput);
 		clearInterval(timer);
 		$("#input").prop("disabled", true);
-		document.getElementById("WPM").innerHTML = "You type " + wpm + " per min";
-		document.getElementById("score").innerHTML =
-			"You type " + score + " right words";
-		document.getElementById("fail").innerHTML =
-			"You type " + fail + " wrong words";
-		document.getElementById("accuracy").innerHTML =
-			"You accuracy is " + Math.floor((score / wpm) * 100) + "%";
+		$("#WPM").html("You type " + wpm + " per min");
+		$("#score").html("You type " + score + " right words");
+		$("#fail").html("You type " + fail + " wrong words");
+		$("#accuracy").html(
+			"You accuracy is " + Math.floor((score / wpm) * 100) + "%"
+		);
 	}
 }
-document.getElementById("input").onkeypress = function () {
+$("#input").keypress(function () {
 	if (!timer) {
 		timer = window.setInterval(function () {
 			myFunction();
 		}, 1000);
 	}
-};
+});
 
 // array compairison
 var score = 0;
@@ -66,17 +65,17 @@ function getScore() {
 	}
 }
 
-document.getElementById("timer").innerHTML = "1:00";
+$("#timer").html("1:00");
 
-document.getElementById("test").value = words.join("");
+$("#given").val(words.join(""));
 
 var userInput = [];
-document.getElementById("input").addEventListener("keydown", function (e) {
+$("#input").on("keydown", function (e) {
 	if (e.which == 32) {
-		userInput.push(document.getElementById("input").value);
-		document.getElementById("input").value = "";
+		userInput.push($("#input").val());
+		$("#input").val("");
 		words.shift();
-		document.getElementById("test").value = words.join("");
+		$("#given").val(words.join(""));
 		console.log(userInput);
 	}
 });

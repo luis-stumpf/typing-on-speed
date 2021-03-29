@@ -8,4 +8,13 @@ input {
 	width: 20em;
 	font-size: 2em;
 	background-color: #c9d6df;
+	margin-bottom: 1em;
+}
+
+h1 {
+	padding: 2em;
+}
+
+#timer {
+	margin: 0.5em 5em;
 }
