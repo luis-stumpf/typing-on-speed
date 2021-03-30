@@ -1,5 +1,5 @@
 // prettier-ignore
-const words = [
+/*const words = [
 	" die",	" der",	" und",	" zu",	" den",	" das",	" nicht",	" von",	" sie",	" ist",	" des",	" sich",	" mit",	" dem",	" dass",	" er",	" es",	" ein",	" ich",	" auf",	" so",	" eine", " auch", " als", " an", " nach", " wie",
 	" im", " für", " ja", " wurde",	" jetzt", " immer",	" seinen", " wohl",	" dieses", " ihren", " würde", " diesen", " sondern", " weil", " welcher", " nichts", " diesem", " alles", " waren", " will", " Herr", " viel", " mein", " also",
 	" soll", " worden",	" lassen", " dies", " machen", " ihrer", " weiter",	" Leben", " recht",	" etwas", " keine",	" seinem", " ob", " dir", " allen", " großen", " Jahre", " Weise", " müssen", " welches", " wäre", " erst", " einmal", 
@@ -7,6 +7,15 @@ const words = [
 	" dessen", " sagen", " bin", " Menschen", " gut", " darauf", " wurden",	" weiß", " gewesen", " Seite", " bald",	" weit", " große", " solche", " hatten", " eben", " andern", " beiden",	" macht", " sehen", " ganze", " anderen", " lange",	
 	" wer",	" ihrem", " zwar", " gemacht", " dort",	" kommen", " Welt",	" heute", " Frau", " werde", " derselben", " ganzen", " deutschen",	" lässt", " vielleicht", " meiner",
 ];
+*/
+
+function getValue(){
+	var value = $.ajax({ 
+	   url: 'words.json', 
+	   async: false
+	}).responseText;
+	return JSON.parse(value).words;
+ }
 
 function shuffleArray(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -17,11 +26,12 @@ function shuffleArray(array) {
 	}
 }
 
+const words = getValue();
+
 shuffleArray(words);
 
 const wordsOrg = [...words];
 
-// start timer
 var seconds = 5;
 var timer;
 function myFunction() {
@@ -44,6 +54,7 @@ function myFunction() {
 		);
 	}
 }
+
 $("#input").keypress(function () {
 	if (!timer) {
 		timer = window.setInterval(function () {
