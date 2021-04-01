@@ -5,7 +5,7 @@ const getData = () => {
       var wordsArray = data.words;
       shuffleArray(wordsArray);
       var wordsOrg = [...wordsArray];
-      $("#given").val(wordsArray.join(""));
+      $("#given").val(wordsArray.join(" "));
       getInput(wordsArray);
       startTimer(wordsOrg);
     });
@@ -72,10 +72,11 @@ var userInput = [];
 function getInput(array) {
   $("#input").on("keydown", function (e) {
     if (e.which == 32) {
-      userInput.push($("#input").val());
+      var userTiped = $("#input").val().replace(" ", "");
+      userInput.push(userTiped);
       $("#input").val("");
       array.shift();
-      $("#given").val(array.join(""));
+      $("#given").val(array.join(" "));
     }
   });
 }
