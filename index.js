@@ -22,7 +22,7 @@ function shuffleArray(array) {
   }
 }
 
-var seconds = 5;
+var seconds = 60;
 var timer;
 function timetick(givenWords) {
   if (seconds < 60) {
